@@ -1,0 +1,9 @@
+apiVersion: v2
+name: cloud-manager-sandbox
+description: The helm chart to deploy a sandbox for Cloud Manager
+type: application
+version: 1.0.0
+appVersion: 1.0.0
+home: https://github.com/skykick/helm-charts/cloud-manager-sandbox
+sources:
+  - https://github.com/skykick/helm-charts/cloud-manager-sandbox

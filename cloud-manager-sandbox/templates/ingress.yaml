@@ -1,0 +1,25 @@
+{{- if .Values.ingress.enabled -}}
+{{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+apiVersion: networking.k8s.io/v1beta1
+{{- else -}}
+apiVersion: extensions/v1beta1
+{{- end }}
+kind: Ingress
+metadata:
+  name: {{ include "cloud-manager-sandbox.fullname" . }}-ingress
+  labels:
+    {{- include "cloud-manager-sandbox.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  rules:
+  - host: {{ .Values.hostname }}
+    http:
+      paths:
+      - path: /sandbox/{{ .Values.sandboxId }}/*
+        backend:
+          serviceName: {{ include "cloud-manager-sandbox.fullname" . }}-service
+          servicePort: {{ $.Values.service.port }}
+{{- end }}

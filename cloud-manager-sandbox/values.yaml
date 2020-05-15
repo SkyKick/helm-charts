@@ -1,0 +1,54 @@
+nameOverride:
+fullnameOverride:
+imageOverride:
+
+environment:
+sandboxId:
+hostname:
+namespace:
+
+
+replicaCount: 1
+image:
+  repository:
+  name: terminal
+  tag: latest
+  pullPolicy: Always
+
+podSecurityContext: {}
+
+securityContext: {}
+
+container:
+  preStopSleepTime: "120"
+  terminationGracePeriodSeconds: 130
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "azure/application-gateway"
+    appgw.ingress.kubernetes.io/backend-path-prefix: "/"
+    appgw.ingress.kubernetes.io/backend-protocol: "http"
+    appgw.ingress.kubernetes.io/connection-draining: "true"
+    appgw.ingress.kubernetes.io/connection-draining-timeout: "60"
+
+container:
+  preStopSleepTime: "120"
+  terminationGracePeriodSeconds: 130
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1024Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+nodeSelector: {}
+
+env: {}

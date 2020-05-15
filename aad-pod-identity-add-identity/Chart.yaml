@@ -1,0 +1,8 @@
+apiVersion: v1
+description: Deploy identity for aad-pod-identity
+name: aad-pod-identity-add-identity
+version: 1.5.6
+appVersion: 1.5.6
+home: https://github.com/skykick/helm-charts/aad-pod-identity-add-identity
+sources:
+  - https://github.com/skykick/helm-charts/aad-pod-identity-add-identity
