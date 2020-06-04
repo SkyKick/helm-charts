@@ -37,23 +37,23 @@ app.kubernetes.io/service: sandbox
 app.kubernetes.io/sandboxId: {{ .Values.sandboxId | quote }}
 {{- end -}}
 
+{{- define "cloud-manager-sandbox.ingress.annotations" -}}
+kubernetes.io/ingress.class: "azure/application-gateway"
+appgw.ingress.kubernetes.io/backend-path-prefix: "/"
+appgw.ingress.kubernetes.io/backend-protocol: "http"
+appgw.ingress.kubernetes.io/connection-draining: "true"
+appgw.ingress.kubernetes.io/connection-draining-timeout: "60"
+{{- if .Values.certificateName }}
+appgw.ingress.kubernetes.io/appgw-ssl-certificate: {{ .Values.certificateName | quote }}
+{{- end }}
+{{- end -}}
+
 {{/*
 Selector labels
 */}}
 {{- define "cloud-manager-sandbox.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "cloud-manager-sandbox.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end -}}
-
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "cloud-manager-sandbox.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create -}}
-    {{ default (include "cloud-manager-sandbox.fullname" .) .Values.serviceAccount.name }}
-{{- else -}}
-    {{ default "default" .Values.serviceAccount.name }}
-{{- end -}}
 {{- end -}}
 
 {{/*

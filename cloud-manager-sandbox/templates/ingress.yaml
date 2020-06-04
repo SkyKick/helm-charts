@@ -9,10 +9,8 @@ metadata:
   name: {{ include "cloud-manager-sandbox.fullname" . }}-ingress
   labels:
     {{- include "cloud-manager-sandbox.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
   annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- include "cloud-manager.ingress.annotations" . | nindent 4 }}
 spec:
   rules:
   - host: {{ .Values.hostname }}
