@@ -43,6 +43,7 @@ appgw.ingress.kubernetes.io/backend-path-prefix: "/"
 appgw.ingress.kubernetes.io/backend-protocol: "http"
 appgw.ingress.kubernetes.io/connection-draining: "true"
 appgw.ingress.kubernetes.io/connection-draining-timeout: "60"
+appgw.ingress.kubernetes.io/request-timeout: "3600"
 {{- if .Values.certificateName }}
 appgw.ingress.kubernetes.io/appgw-ssl-certificate: {{ .Values.certificateName | quote }}
 {{- end }}
