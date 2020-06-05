@@ -19,6 +19,16 @@ spec:
       labels:
         {{- include "cloud-manager-sandbox.selectorLabels" . | nindent 8 }}
     spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: agentpool
+                operator: In
+                values:
+                - linux1
       restartPolicy: Always
       terminationGracePeriodSeconds: {{ .Values.container.terminationGracePeriodSeconds }}
       containers:
