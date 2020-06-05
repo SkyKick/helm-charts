@@ -3,7 +3,7 @@ entries:
   aad-pod-identity-add-identity:
   - apiVersion: v1
     appVersion: 1.6.0
-    created: "2020-06-05T00:39:39.8964504-04:00"
+    created: "2020-06-05T01:26:08.3942737-04:00"
     description: Deploy identity for aad-pod-identity
     digest: a0d5491cb577df375c2d7affb77dff4a7e83191f31b80e8a645945f3cb1674ab
     home: https://github.com/skykick/helm-charts/aad-pod-identity-add-identity
@@ -15,7 +15,7 @@ entries:
     version: 1.6.0
   - apiVersion: v1
     appVersion: 1.5.6
-    created: "2020-06-05T00:39:39.88345-04:00"
+    created: "2020-06-05T01:26:08.3932742-04:00"
     description: Deploy identity for aad-pod-identity
     digest: 202cac56d6897f16c4e08f650a3f5c981df1b3ba4e5a634752a973ec69f5a866
     home: https://github.com/skykick/helm-charts/aad-pod-identity-add-identity
@@ -28,9 +28,9 @@ entries:
   cloud-manager-sandbox:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-06-05T00:39:39.8974648-04:00"
+    created: "2020-06-05T01:26:08.3942737-04:00"
     description: The helm chart to deploy a sandbox for Cloud Manager
-    digest: 993990f553d535aea0dd69b7561e1b5bf61f9d657065dd79f4a4a338acd37568
+    digest: e79b3151a4ea0e80a7de84b96f40fad255700ed8e43a0851802fc47f3de57cee
     home: https://github.com/skykick/helm-charts/cloud-manager-sandbox
     name: cloud-manager-sandbox
     sources:
@@ -39,4 +39,4 @@ entries:
     urls:
     - https://skykick.github.io/helm-charts/cloud-manager-sandbox-1.0.0.tgz
     version: 1.0.0
-generated: "2020-06-05T00:39:39.8699204-04:00"
+generated: "2020-06-05T01:26:08.392305-04:00"

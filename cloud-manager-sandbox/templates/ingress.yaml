@@ -10,7 +10,7 @@ metadata:
   labels:
     {{- include "cloud-manager-sandbox.labels" . | nindent 4 }}
   annotations:
-    {{- include "cloud-manager.ingress.annotations" . | nindent 4 }}
+    {{- include "cloud-manager-sandbox.ingress.annotations" . | nindent 4 }}
 spec:
   rules:
   - host: {{ .Values.hostname }}
