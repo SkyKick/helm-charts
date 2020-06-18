@@ -19,6 +19,10 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 {{- end -}}
 
+{{- define "cloud-manager.sandbox.traefik.middleware.stripPrefixRegex.fullname" -}}
+{{- printf "%s-sandbox-traefik-stripprefixregex" ( .Release.Name ) | trunc 63 | trimSuffix "-" -}}
+{{- end }}
+
 {{/*
 Create chart name and version as used by the chart label.
 */}}
@@ -38,15 +42,9 @@ app.kubernetes.io/sandboxId: {{ .Values.sandboxId | quote }}
 {{- end -}}
 
 {{- define "cloud-manager-sandbox.ingress.annotations" -}}
-kubernetes.io/ingress.class: "azure/application-gateway"
-appgw.ingress.kubernetes.io/backend-path-prefix: "/"
-appgw.ingress.kubernetes.io/backend-protocol: "http"
-appgw.ingress.kubernetes.io/connection-draining: "true"
-appgw.ingress.kubernetes.io/connection-draining-timeout: "60"
-appgw.ingress.kubernetes.io/request-timeout: "3600"
-{{- if .Values.certificateName }}
-appgw.ingress.kubernetes.io/appgw-ssl-certificate: {{ .Values.certificateName | quote }}
-{{- end }}
+kubernetes.io/ingress.class: "{{ .Release.Namespace }}-{{ .Values.environment }}"
+traefik.ingress.kubernetes.io/router.entrypoints: web
+traefik.ingress.kubernetes.io/router.middlewares: "{{ .Release.Namespace }}-{{ include "cloud-manager.sandbox.traefik.middleware.stripPrefixRegex.fullname" . }}@kubernetescrd"
 {{- end -}}
 
 {{/*

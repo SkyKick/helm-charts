@@ -2,7 +2,7 @@ apiVersion: v2
 name: cloud-manager-sandbox
 description: The helm chart to deploy a sandbox for Cloud Manager
 type: application
-version: 1.0.0
+version: 1.0.0-traefik
 appVersion: 1.0.0
 home: https://github.com/skykick/helm-charts/cloud-manager-sandbox
 sources:
