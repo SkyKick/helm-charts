@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-        {{- include "cloud-manager-sandbox.selectorLabels" . | nindent 8 }}
+        {{- include "cloud-manager-sandbox.labels" . | nindent 8 }}
     spec:
       affinity:
         nodeAffinity:
