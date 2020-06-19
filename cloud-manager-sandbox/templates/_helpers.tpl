@@ -20,7 +20,7 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 
 {{- define "cloud-manager.sandbox.traefik.middleware.stripPrefixRegex.fullname" -}}
-{{- printf "%s-sandbox-traefik-stripprefixregex" ( .Release.Name ) | trunc 63 | trimSuffix "-" -}}
+{{- printf "%s-sandbox-traefik-stripprefixregex" ( .Values.environment ) | trunc 63 | trimSuffix "-" -}}
 {{- end }}
 
 {{/*
