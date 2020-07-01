@@ -16,7 +16,7 @@ spec:
   - host: {{ .Values.hostname }}
     http:
       paths:
-      - path: /sandbox/{{ .Values.sandboxId }}
+      - path: /sandbox/{{ .Values.sandboxId }}/
         backend:
           serviceName: {{ include "cloud-manager-sandbox.fullname" . }}-service
           servicePort: {{ $.Values.service.port }}
