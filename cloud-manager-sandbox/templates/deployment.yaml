@@ -32,10 +32,6 @@ spec:
                 operator: In
                 values:
                 - amd64
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
               - key: agentpool
                 operator: In
                 values:
