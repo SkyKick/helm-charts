@@ -33,9 +33,9 @@ spec:
                 values:
                 - amd64
               - key: agentpool
-                operator: In
+                operator: NotIn
                 values:
-                - linux1
+                - pool
       restartPolicy: Always
       terminationGracePeriodSeconds: {{ .Values.container.terminationGracePeriodSeconds }}
       containers:
