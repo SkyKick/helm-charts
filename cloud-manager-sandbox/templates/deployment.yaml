@@ -57,3 +57,9 @@ spec:
             preStop:
               exec:
                 command: ["sleep",{{ .Values.container.preStopSleepTime | quote }}]
+            postStart:
+              exec:
+                command:
+                - /bin/sh
+                - -c
+                - "/bin/echo 'options single-request-reopen' >> /etc/resolv.conf"
