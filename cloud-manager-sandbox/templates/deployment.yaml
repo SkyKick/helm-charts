@@ -56,7 +56,10 @@ spec:
           lifecycle:
             preStop:
               exec:
-                command: ["sleep",{{ .Values.container.preStopSleepTime | quote }}]
+                command: 
+                - /bin/sh
+                - -c
+                - echo "`date -u +%Y-%m-%dT%H:%M:%SZ` - Starting {{ .Values.container.preStopSleepTime }} second sleep" >> /dev/termination-log; sleep {{ .Values.container.preStopSleepTime }}; while [ $(pgrep pwsh) > 0 ]; do echo "`date -u +%Y-%m-%dT%H:%M:%SZ` - Waiting for pwsh end..." >> /dev/termination-log; sleep 5; done; echo "Sandbox terminating now" >> /dev/termination-log
             postStart:
               exec:
                 command:

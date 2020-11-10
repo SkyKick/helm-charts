@@ -20,8 +20,8 @@ podSecurityContext: {}
 securityContext: {}
 
 container:
-  preStopSleepTime: "120"
-  terminationGracePeriodSeconds: 130
+  preStopSleepTime: "60"
+  terminationGracePeriodSeconds: 86400 # one day
 
 service:
   type: ClusterIP
@@ -29,10 +29,6 @@ service:
 
 ingress:
   enabled: true
-
-container:
-  preStopSleepTime: "120"
-  terminationGracePeriodSeconds: 130
 
 resources:
   limits:
